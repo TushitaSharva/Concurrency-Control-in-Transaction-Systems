@@ -1,0 +1,131 @@
+tushita@tushita-XPS-15-9510:~/IITH/SEM_8/CCTS/ASSIGNMENT 2/Code$ ./run.sh
+Compiling BTO
+Compiling MVTO
+Compiling MVTO-gc
+Compiling k-MVTO
+Experiment: ./inputs/E1/1000 transactions.txt
+[BTO] Avg commit delay = 686.626 Avg aborts = 1.145
+[MVTO] Avg commit delay = 517.4 Avg aborts = 0.475
+[MVTO-gc] Avg commit delay = 537.394 Avg aborts = 0.57
+[k-MVTO] Avg commit delay = 506.646 Avg aborts = 0.443
+Experiment: ./inputs/E1/2000 transactions.txt
+[BTO] Avg commit delay = 670.255 Avg aborts = 1.1065
+[MVTO] Avg commit delay = 504.753 Avg aborts = 0.4235
+[MVTO-gc] Avg commit delay = 520.841 Avg aborts = 0.499
+[k-MVTO] Avg commit delay = 520.244 Avg aborts = 0.505
+Experiment: ./inputs/E1/3000 transactions.txt
+[BTO] Avg commit delay = 671.709 Avg aborts = 1.08
+[MVTO] Avg commit delay = 510.04 Avg aborts = 0.462667
+[MVTO-gc] Avg commit delay = 510.955 Avg aborts = 0.466
+[k-MVTO] Avg commit delay = 522.213 Avg aborts = 0.492667
+Experiment: ./inputs/E1/4000 transactions.txt
+[BTO] Avg commit delay = 664.918 Avg aborts = 1.069
+[MVTO] Avg commit delay = 520.936 Avg aborts = 0.49375
+[MVTO-gc] Avg commit delay = 530.471 Avg aborts = 0.54175
+[k-MVTO] Avg commit delay = 508.053 Avg aborts = 0.4625
+Experiment: ./inputs/E1/5000 transactions.txt
+[BTO] Avg commit delay = 673.591 Avg aborts = 1.0974
+[MVTO] Avg commit delay = 519.208 Avg aborts = 0.4964
+[MVTO-gc] Avg commit delay = 521.584 Avg aborts = 0.5166
+[k-MVTO] Avg commit delay = 513.558 Avg aborts = 0.484
+Experiment: ./inputs/E2/1000 variables.txt
+[BTO] Avg commit delay = 660.348 Avg aborts = 1.077
+[MVTO] Avg commit delay = 513.161 Avg aborts = 0.465
+[MVTO-gc] Avg commit delay = 522.769 Avg aborts = 0.529
+[k-MVTO] Avg commit delay = 528.893 Avg aborts = 0.515
+Experiment: ./inputs/E2/2000 variables.txt
+[BTO] Avg commit delay = 496.299 Avg aborts = 0.413
+[MVTO] Avg commit delay = 446.117 Avg aborts = 0.185
+[MVTO-gc] Avg commit delay = 437.813 Avg aborts = 0.163
+[k-MVTO] Avg commit delay = 438.614 Avg aborts = 0.213
+Experiment: ./inputs/E2/3000 variables.txt
+[BTO] Avg commit delay = 455.173 Avg aborts = 0.235
+[MVTO] Avg commit delay = 418.446 Avg aborts = 0.107
+[MVTO-gc] Avg commit delay = 428.975 Avg aborts = 0.122
+[k-MVTO] Avg commit delay = 417.285 Avg aborts = 0.104
+Experiment: ./inputs/E2/4000 variables.txt
+[BTO] Avg commit delay = 443.98 Avg aborts = 0.189
+[MVTO] Avg commit delay = 416.492 Avg aborts = 0.099
+[MVTO-gc] Avg commit delay = 424.127 Avg aborts = 0.107
+[k-MVTO] Avg commit delay = 421.552 Avg aborts = 0.108
+Experiment: ./inputs/E2/5000 variables.txt
+[BTO] Avg commit delay = 425.863 Avg aborts = 0.116
+[MVTO] Avg commit delay = 407.389 Avg aborts = 0.063
+[MVTO-gc] Avg commit delay = 420.83 Avg aborts = 0.068
+[k-MVTO] Avg commit delay = 416.809 Avg aborts = 0.064
+Experiment: ./inputs/E3/2 power 1 threads.txt
+[BTO] Avg commit delay = 400.902 Avg aborts = 0.036
+[MVTO] Avg commit delay = 404.649 Avg aborts = 0.031
+[MVTO-gc] Avg commit delay = 404.884 Avg aborts = 0.028
+[k-MVTO] Avg commit delay = 401.328 Avg aborts = 0.029
+Experiment: ./inputs/E3/2 power 2 threads.txt
+[BTO] Avg commit delay = 423.845 Avg aborts = 0.106
+[MVTO] Avg commit delay = 410.835 Avg aborts = 0.074
+[MVTO-gc] Avg commit delay = 414.265 Avg aborts = 0.07
+[k-MVTO] Avg commit delay = 421.707 Avg aborts = 0.097
+Experiment: ./inputs/E3/2 power 3 threads.txt
+[BTO] Avg commit delay = 494.566 Avg aborts = 0.372
+[MVTO] Avg commit delay = 436.209 Avg aborts = 0.171
+[MVTO-gc] Avg commit delay = 446.507 Avg aborts = 0.211
+[k-MVTO] Avg commit delay = 431.034 Avg aborts = 0.144
+Experiment: ./inputs/E3/2 power 4 threads.txt
+[BTO] Avg commit delay = 679.948 Avg aborts = 1.118
+[MVTO] Avg commit delay = 493.914 Avg aborts = 0.42
+[MVTO-gc] Avg commit delay = 500.873 Avg aborts = 0.43
+[k-MVTO] Avg commit delay = 509.464 Avg aborts = 0.467
+Experiment: ./inputs/E3/2 power 5 threads.txt
+[BTO] Avg commit delay = 1636.04 Avg aborts = 5.595
+[MVTO] Avg commit delay = 739.98 Avg aborts = 1.563
+[MVTO-gc] Avg commit delay = 739.782 Avg aborts = 1.568
+[k-MVTO] Avg commit delay = 731.699 Avg aborts = 1.514
+Experiment: ./inputs/E4/k = 10.txt
+[BTO] Avg commit delay = 624.935 Avg aborts = 0.935
+[MVTO] Avg commit delay = 494.376 Avg aborts = 0.418
+[MVTO-gc] Avg commit delay = 491.646 Avg aborts = 0.396
+[k-MVTO] Avg commit delay = 515.851 Avg aborts = 0.494
+Experiment: ./inputs/E4/k = 15.txt
+[BTO] Avg commit delay = 660.03 Avg aborts = 1.045
+[MVTO] Avg commit delay = 505.16 Avg aborts = 0.452
+[MVTO-gc] Avg commit delay = 511.116 Avg aborts = 0.457
+[k-MVTO] Avg commit delay = 495.776 Avg aborts = 0.417
+Experiment: ./inputs/E4/k = 20.txt
+[BTO] Avg commit delay = 688.973 Avg aborts = 1.153
+[MVTO] Avg commit delay = 501.84 Avg aborts = 0.437
+[MVTO-gc] Avg commit delay = 507.785 Avg aborts = 0.46
+[k-MVTO] Avg commit delay = 501.148 Avg aborts = 0.435
+Experiment: ./inputs/E4/k = 25.txt
+[BTO] Avg commit delay = 660.993 Avg aborts = 1.052
+[MVTO] Avg commit delay = 508.762 Avg aborts = 0.481
+[MVTO-gc] Avg commit delay = 512.189 Avg aborts = 0.463
+[k-MVTO] Avg commit delay = 535.927 Avg aborts = 0.559
+Experiment: ./inputs/E4/k = 5.txt
+[BTO] Avg commit delay = 664.174 Avg aborts = 1.077
+[MVTO] Avg commit delay = 492.306 Avg aborts = 0.413
+[MVTO-gc] Avg commit delay = 512.248 Avg aborts = 0.506
+[k-MVTO] Avg commit delay = 513.224 Avg aborts = 0.471
+Experiment: ./inputs/E5/readRatio 50.txt
+[BTO] Avg commit delay = 800.092 Avg aborts = 1.624
+[MVTO] Avg commit delay = 626.57 Avg aborts = 0.948
+[MVTO-gc] Avg commit delay = 600.791 Avg aborts = 0.855
+[k-MVTO] Avg commit delay = 587.873 Avg aborts = 0.802
+Experiment: ./inputs/E5/readRatio 60.txt
+[BTO] Avg commit delay = 744.516 Avg aborts = 1.404
+[MVTO] Avg commit delay = 537.058 Avg aborts = 0.592
+[MVTO-gc] Avg commit delay = 565.535 Avg aborts = 0.695
+[k-MVTO] Avg commit delay = 555.853 Avg aborts = 0.657
+Experiment: ./inputs/E5/readRatio 70.txt
+[BTO] Avg commit delay = 676.301 Avg aborts = 1.11
+[MVTO] Avg commit delay = 511.789 Avg aborts = 0.515
+[MVTO-gc] Avg commit delay = 516.186 Avg aborts = 0.491
+[k-MVTO] Avg commit delay = 507.129 Avg aborts = 0.468
+Experiment: ./inputs/E5/readRatio 80.txt
+[BTO] Avg commit delay = 597.585 Avg aborts = 0.801
+[MVTO] Avg commit delay = 471.155 Avg aborts = 0.329
+[MVTO-gc] Avg commit delay = 461.889 Avg aborts = 0.287
+[k-MVTO] Avg commit delay = 482.949 Avg aborts = 0.362
+Experiment: ./inputs/E5/readRatio 90.txt
+[BTO] Avg commit delay = 482.653 Avg aborts = 0.335
+[MVTO] Avg commit delay = 425.004 Avg aborts = 0.129
+[MVTO-gc] Avg commit delay = 434.306 Avg aborts = 0.139
+[k-MVTO] Avg commit delay = 425.199 Avg aborts = 0.125
+tushita@tushita-XPS-15-9510:~/IITH/SEM_8/CCTS/ASSIGNMENT 2/Code$ 

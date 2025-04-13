@@ -1,0 +1,184 @@
+enum Status {ongoing, committed, aborted};
+
+class versionedDataItem {
+    int version,
+    int valueInThisVersion,
+    set<int> readList
+
+    int getLargestInReadList() {
+        return *readList.rbegin(); // Will return last element of the set
+    }
+}
+
+class DataItem {
+    vector<versionedDataItem> versions;
+    mutex dataLock;
+
+    int searchGreatestLessThanMe(id) {
+        // The versions created are equal to size of versions vector
+        // We can implement binary search for greatest number less than id between 0 and versions.size()-1 both inclusive
+
+        int left = 0; int right = versions.size()-1;
+        int ans = -1;
+        while(left <= right) {
+            int mid = (left+right) >> 1;
+
+            if(mid >= id) {
+                // Eliminate right half
+                right = mid-1;
+            }
+            else {
+                // Eliminate left half
+                ans = mid;
+                left = mid+1;
+            }
+        }
+
+        return ans;
+    }
+}
+
+atomic<int> counter{1};
+
+class txn {
+    int id;
+    Status status;
+    map<int, int> localMap;
+
+    txn() {
+        id = counter.fetch_add(1);
+        status = ongoing;
+    }
+}
+
+DataItem[] shared = new DataItem[m];
+
+
+begin_trans() {
+    txn t = new txn();
+    return t;
+}
+
+bool read(t, randInd, localVal) {
+    if(t.localMap.find(randInd) != t.localMap.end()) { // i.e., already read previously
+        *localVal = t.localMap[randInd];
+        return true;
+    }
+    
+    shared[randInd].dataLock.lock()
+    int version = shared[randInd].searchGreatestLessThanMe(t.id);
+    *localVal = shared[randInd].versions[version].valueInThisVersion;
+    t.localMap[randInd] = *localVal;
+    shared[randInd].dataLock.unlock();
+
+    return true;
+}
+
+bool write(t, randInd, localVal) {
+    if(t.localMap.find(randInd) != t.localMap.end()) {
+        t.localMap[randInd] = localVal;
+        return true;
+    }
+
+    shared[randInd].dataLock.lock()
+    int version = shared[randInd].searchGreatestLessThanMe(t.id);
+
+    if(shared[randInd].versions[version].getLargestInReadList() > t.id) {
+        t.status = aborted;
+        return false;
+    }
+
+    t.localMap[randInd] = localVal;
+    shared[randInd].dataLock.unlock();
+
+    return true;
+}
+
+status tryC(transaction t) {
+    if(t.status != ongoing) {
+        // Start aborting process
+        for(const auto& [key, val] : t.localMap) {
+            shared[key].dataLock.lock();
+            for(auto i : shared[key].versions) {
+                i.readList.erase(t.id);
+            }
+            shared[key].dataLock.unlock();
+        }
+
+        return aborted;
+    }
+
+    for (const auto& [key, val] : t.localMap) {
+        shared[key].dataLock.lock();
+        versionedDataItem v;
+        v.version = t.id;
+        v.valueInThisVersion = val;
+        v.timestampOfGreatestTransaction = t.id;
+        shared[key].versions.push_back(v);
+        shared[key].dataLock.unlock();
+    }
+
+    return committed;
+}
+
+void updtMem(int i) {
+    TransactionStatus status = aborted;
+    int abortCnt = -1;
+        
+    auto critStartTime = std::chrono::high_resolution_clock::now();
+
+    do {
+        txn t = begin_trans();
+        int localVal = 0;
+
+        for(int i = 0; i < randIters; i++) {
+            int randInd = rand()%m;
+            int randVal = rand()%constVal;
+
+            bool readResult = read(t, randInd, &localVal);
+
+            if(readResult == false) {
+                break;
+            }
+            
+            localVal += randVal;
+            
+            bool writeResult = write(t, randInd, localVal);
+
+            if(writeResult == false) {
+                break;
+            }
+
+            auto randTime = Timer(lambda);
+            // sleep(randTime); // seconds delay
+            usleep((int)Timer(lambda) *1e3); // seconds level delay
+        }
+
+        status = tryCommit(t);
+
+        if(status == aborted) {
+            abortCnt++;
+        }
+        
+        delete t;
+    } while (status != commited);
+
+    auto critEndTime = std::chrono::high_resolution_clock::now();
+    auto commitDelay = std::chrono::duration_cast<std::chrono::milliseconds>(critEndTime - critStartTime).count();
+
+    totalCommitDelay.fetch_add(commitDelay);
+    totalAborts.fetch_add(abortCnt);
+}
+
+int main(int argc, char *argv[]) {
+
+    for(int i = 0; i < n; i++) {
+        threads[i] = std::thread(updtMem, i);
+    }
+
+    for(int i = 0; i < n; i++) {
+        threads[i].join();
+    }
+
+    return 0;
+}
